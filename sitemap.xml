@@ -22,6 +22,12 @@
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/CreatePlots2.html</loc>
   </url>
   <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/CreatePlotsNorway.html</loc>
+  </url>
+  <url>
+    <loc>https://folkehelseinstituttet.github.io/fhi//reference/CreatePlotsNorwayByAge.html</loc>
+  </url>
+  <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/DeleteLatestDoneFile.html</loc>
   </url>
   <url>
@@ -64,12 +70,6 @@
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/sykdompulspdf_template_copy.html</loc>
   </url>
   <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/sykdompulspdf_template_copy_ALL.html</loc>
-  </url>
-  <url>
     <loc>https://folkehelseinstituttet.github.io/fhi//reference/sykdompulspdf_template_remove.html</loc>
-  </url>
-  <url>
-    <loc>https://folkehelseinstituttet.github.io/fhi//reference/sykdompulspdf_template_remove_ALL.html</loc>
   </url>
 </urlset>
