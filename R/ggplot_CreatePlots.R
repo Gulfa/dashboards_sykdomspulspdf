@@ -88,7 +88,7 @@ ggplot_CreatePlots1 <- function(d, weeknow, Ukenummer, title, yrange) {
 #' @export
 #'
 ggplot_CreatePlotsNorway <- function(data_long, weeknow, Ukenummer, title, yrange) {
-  seasons <- rev(unique(data_long$season))[1:5]
+  seasons <- rev(unique(data_long$season))[1:6]
   labs <- unique(data_long[, c("week", "x")])
   labs <- labs[as.numeric(week) %in% seq(2, 52, 2)]
 
@@ -101,7 +101,13 @@ ggplot_CreatePlotsNorway <- function(data_long, weeknow, Ukenummer, title, yrang
   q <- q + annotate("text", x = fhi::x(14), y = yrange * 0.03, label = "P\u00E5ske", size = 10)
   q <- q + geom_line(lwd = 3)
   q <- q + fhiplot::theme_fhi_basic(24)
-  q <- q + fhiplot::scale_color_fhi("", palette = "combination")
+  #  q <- q + fhiplot::scale_color_fhi("", palette = "combination")
+  q <- q + scale_color_manual("",values = c("green",
+                                            "red",
+                                            "orange",
+                                            "purple",
+                                            "blue",
+                                            "black"))
   q <- q + expand_limits(y = 0)
   q <- q + scale_y_continuous("Antall konsultasjoner", expand = expand_scale(mult = c(0, 0.1)))
   q <- q + scale_x_continuous(
@@ -193,18 +199,24 @@ ggplot_CreatePlotsNorwayByAge <- function(data_long, weeknow, Ukenummer, Fylkena
   ageGroups <- c("0 - 4 \u00E5r", "5 - 19 \u00E5r", "20 - 64 \u00E5r", "65+ \u00E5r")
   data_long[, age := factor(newage, levels = c(1:4), labels = ageGroups)]
 
-  seasons <- rev(unique(data_long$season))[1:5]
+  seasons <- rev(unique(data_long$season))[1:6]
   labs <- unique(data_long[, c("week", "x")])
   labs <- labs[as.numeric(week) %in% c("30", "37", "44", "51", "5", "11", "18", "25")]
 
   q <- ggplot(data_long[season %in% seasons], aes(x = x, y = value, color = season))
-  q <- q + geom_vline(xintercept = fhi::x(51), lty = 2)
-  q <- q + geom_vline(xintercept = fhi::x(2), lty = 2)
-  q <- q + geom_vline(xintercept = fhi::x(11), lty = 2)
-  q <- q + geom_vline(xintercept = fhi::x(17), lty = 2)
-  q <- q + geom_line(lwd = 3)
+  q <- q + geom_vline(xintercept = fhi::x(51), lty = 1)
+  q <- q + geom_vline(xintercept = fhi::x(2), lty = 1)
+  q <- q + geom_vline(xintercept = fhi::x(11), lty = 1)
+  q <- q + geom_vline(xintercept = fhi::x(17), lty = 1)
+  q <- q + geom_line(lwd = 2)
   q <- q + fhiplot::theme_fhi_basic(24)
-  q <- q + fhiplot::scale_color_fhi("", palette = "combination")
+  #q <- q + fhiplot::scale_color_fhi("", palette = "combination")
+  q <- q + scale_color_manual("",values = c("green",
+                                            "red",
+                                            "orange",
+                                            "purple",
+                                            "blue",
+                                            "black"))
   q <- q + expand_limits(y = 0)
   q <- q + scale_y_continuous("Antall konsultasjoner", expand = expand_scale(mult = c(0, 0.1)))
   q <- q + scale_x_continuous(

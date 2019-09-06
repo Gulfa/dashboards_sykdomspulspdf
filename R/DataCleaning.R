@@ -210,6 +210,12 @@ CleanData <- function(d) {
   d[, month := format.Date(date, "%m")]
   d[, week := format.Date(date, "%V")]
 
+  # remove last 3 weeks
+  current_year <- max(as.integer(d[, year]))
+  current_week <- max(as.integer(d[as.integer(year) == current_year, week]))
+  d <- d[(as.integer(year) < current_year) | (as.integer(year) == current_year & as.integer(week) <= (current_week - 3))]
+
+  
   d[, newage := NA]
   d$newage[d$age == "0-4"] <- 1
   d$newage[d$age == "5-14"] <- 2
